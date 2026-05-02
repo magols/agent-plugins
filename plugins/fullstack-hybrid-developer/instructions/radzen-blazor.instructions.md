@@ -5,493 +5,229 @@ applyTo: '**/*.razor, **/*.razor.cs, **/*.cs'
 
 # Radzen Blazor Components
 
-## Overview
+## Scope
 
-This project uses [Radzen.Blazor](https://blazor.radzen.com/) v8 for UI components. Radzen provides a comprehensive set of enterprise-grade Blazor components with Material 3 theme support.
+Use this guidance when generating or editing Blazor UI that should use Radzen components as the default UI toolkit.
 
-## Configuration
+## Version Baseline
 
-### Theme Setup
+- Target package: `Radzen.Blazor` latest stable.
+- Current baseline for this instruction: `10.3.2`.
+- If the project is pinned to another version, keep compatibility with the pinned version.
 
-The project uses Material 3 theme configured in `App.razor`:
-```razor
-<RadzenTheme Theme="material3" @rendermode="InteractiveServer"/>
+Package update command:
+```bash
+dotnet add package Radzen.Blazor --version 10.3.2
 ```
 
-### Service Registration
+## Required Setup
 
-Radzen services are registered in `Program.cs`:
+### Program.cs
 ```csharp
 builder.Services.AddRadzenComponents();
 ```
 
-## Common Components
-
-### Form Controls
-
-#### RadzenTextBox
+### _Imports.razor
 ```razor
-<RadzenTextBox @bind-Value="@model.Name" 
-               Placeholder="Enter name" 
-               MaxLength="100" />
+@using Radzen
+@using Radzen.Blazor
 ```
 
-#### RadzenNumeric
+### App.razor
+Use one Radzen theme and include the Radzen script.
+
 ```razor
-<RadzenNumeric @bind-Value="@model.Age" 
-               TValue="int" 
-               Min="0" 
-               Max="120" />
+<RadzenTheme Theme="material3" @rendermode="InteractiveServer" />
+<script src="_content/Radzen.Blazor/Radzen.Blazor.js"></script>
 ```
 
-#### RadzenDropDown
+## Authoring Rules For This Repo
+
+- Prefer Radzen components over raw HTML when an equivalent exists.
+- Prefer `RadzenStack`, `RadzenRow`, and `RadzenColumn` for layout.
+- Use strongly typed components (`TItem`, `TValue`) for `RadzenDataGrid`, `RadzenDropDown`, and `RadzenNumeric`.
+- Use async event handlers (`async Task`) for UI actions and service calls.
+- Keep forms inside `EditForm` with `DataAnnotationsValidator` and `ValidationMessage`.
+- Avoid large inline styles; use CSS classes and token variables.
+- Add accessibility attributes (`aria-label`, meaningful button text, keyboard-friendly flows).
+
+## High-Value Patterns
+
+### CRUD Grid Pattern
 ```razor
-<RadzenDropDown @bind-Value="@selectedValue"
-                Data="@items"
-                TextProperty="Name"
-                ValueProperty="Id"
-                Placeholder="Select an option" />
-```
-
-#### RadzenCheckBox
-```razor
-<RadzenCheckBox @bind-Value="@model.IsActive" 
-                Name="isActive" />
-<RadzenLabel Text="Active" Component="isActive" Style="margin-left: 8px;" />
-```
-
-#### RadzenDatePicker
-```razor
-<RadzenDatePicker @bind-Value="@model.DateOfBirth" 
-                  DateFormat="MM/dd/yyyy" 
-                  ShowCalendarWeek="true" />
-```
-
-### Buttons and Actions
-
-#### RadzenButton
-```razor
-<RadzenButton Text="Save" 
-              ButtonStyle="ButtonStyle.Primary" 
-              Click="@OnSaveAsync" 
-              IsBusy="@isSaving" />
-              
-<RadzenButton Icon="delete" 
-              ButtonStyle="ButtonStyle.Danger" 
-              Click="@OnDeleteAsync"
-              Variant="Variant.Outlined" />
-```
-
-#### RadzenSplitButton
-```razor
-<RadzenSplitButton Icon="save" 
-                   Text="Save" 
-                   Click="@OnSaveAsync">
-    <ChildContent>
-        <RadzenSplitButtonItem Text="Save and Close" Icon="save" Click="@OnSaveAndCloseAsync" />
-        <RadzenSplitButtonItem Text="Save as Draft" Icon="drafts" Click="@OnSaveDraftAsync" />
-    </ChildContent>
-</RadzenSplitButton>
-```
-
-### Layout Components
-
-#### RadzenCard
-```razor
-<RadzenCard>
-    <RadzenStack Orientation="Orientation.Vertical" Gap="1rem">
-        <RadzenText TextStyle="TextStyle.H6">Card Title</RadzenText>
-        <RadzenText>Card content goes here.</RadzenText>
-    </RadzenStack>
-</RadzenCard>
-```
-
-#### RadzenStack
-```razor
-<RadzenStack Orientation="Orientation.Horizontal" 
-             Gap="1rem" 
-             AlignItems="AlignItems.Center">
-    <RadzenIcon Icon="home" />
-    <RadzenText>Home</RadzenText>
-</RadzenStack>
-```
-
-#### RadzenRow and RadzenColumn
-```razor
-<RadzenRow Gap="1rem">
-    <RadzenColumn Size="12" SizeMD="6">
-        <RadzenCard>Left Column</RadzenCard>
-    </RadzenColumn>
-    <RadzenColumn Size="12" SizeMD="6">
-        <RadzenCard>Right Column</RadzenCard>
-    </RadzenColumn>
-</RadzenRow>
-```
-
-### Data Display
-
-#### RadzenDataGrid
-```razor
-<RadzenDataGrid Data="@items" 
-                TItem="MyItem" 
-                AllowFiltering="true" 
+<RadzenDataGrid Data="@items"
+                TItem="ProductDto"
+                AllowFiltering="true"
                 AllowSorting="true"
-                AllowPaging="true" 
-                PageSize="10">
+                AllowPaging="true"
+                PageSize="20"
+                Responsive="true">
     <Columns>
-        <RadzenDataGridColumn TItem="MyItem" Property="Id" Title="ID" Width="80px" />
-        <RadzenDataGridColumn TItem="MyItem" Property="Name" Title="Name" />
-        <RadzenDataGridColumn TItem="MyItem" Property="CreatedDate" Title="Created" FormatString="{0:MM/dd/yyyy}" />
-        <RadzenDataGridColumn TItem="MyItem" Title="Actions" Sortable="false" Filterable="false">
-            <Template Context="item">
-                <RadzenButton Icon="edit" ButtonStyle="ButtonStyle.Light" Size="ButtonSize.Small" 
-                              Click="@(() => OnEditAsync(item))" />
-                <RadzenButton Icon="delete" ButtonStyle="ButtonStyle.Danger" Size="ButtonSize.Small" 
-                              Click="@(() => OnDeleteAsync(item))" />
+        <RadzenDataGridColumn TItem="ProductDto" Property="Id" Title="ID" Width="90px" />
+        <RadzenDataGridColumn TItem="ProductDto" Property="Name" Title="Name" />
+        <RadzenDataGridColumn TItem="ProductDto" Property="Price" Title="Price" FormatString="{0:C}" />
+        <RadzenDataGridColumn TItem="ProductDto" Title="Actions" Sortable="false" Filterable="false">
+            <Template Context="row">
+                <RadzenButton Icon="edit" ButtonStyle="ButtonStyle.Light" Size="ButtonSize.Small"
+                              Click="@(() => EditAsync(row))" />
+                <RadzenButton Icon="delete" ButtonStyle="ButtonStyle.Danger" Size="ButtonSize.Small"
+                              Click="@(() => ConfirmDeleteAsync(row))" />
             </Template>
         </RadzenDataGridColumn>
     </Columns>
 </RadzenDataGrid>
 ```
 
-#### RadzenDataList
+### Form Pattern
 ```razor
-<RadzenDataList Data="@items" TItem="MyItem">
-    <Template Context="item">
-        <RadzenCard Style="margin-bottom: 1rem;">
-            <RadzenText TextStyle="TextStyle.Subtitle1">@item.Name</RadzenText>
-            <RadzenText>@item.Description</RadzenText>
-        </RadzenCard>
-    </Template>
-</RadzenDataList>
-```
-
-### Navigation
-
-#### RadzenMenu
-```razor
-<RadzenMenu>
-    <RadzenMenuItem Text="Home" Icon="home" Path="/" />
-    <RadzenMenuItem Text="Products" Icon="shopping_cart">
-        <RadzenMenuItem Text="All Products" Path="/products" />
-        <RadzenMenuItem Text="Categories" Path="/categories" />
-    </RadzenMenuItem>
-    <RadzenMenuItem Text="Settings" Icon="settings" Path="/settings" />
-</RadzenMenu>
-```
-
-#### RadzenPanelMenu
-```razor
-<RadzenPanelMenu>
-    <RadzenPanelMenuItem Text="Dashboard" Icon="dashboard" Path="/" />
-    <RadzenPanelMenuItem Text="Reports" Icon="assessment" Expanded="true">
-        <RadzenPanelMenuItem Text="Sales Report" Path="/reports/sales" />
-        <RadzenPanelMenuItem Text="Inventory Report" Path="/reports/inventory" />
-    </RadzenPanelMenuItem>
-</RadzenPanelMenu>
-```
-
-#### RadzenBreadCrumb
-```razor
-<RadzenBreadCrumb>
-    <RadzenBreadCrumbItem Path="/" Text="Home" Icon="home" />
-    <RadzenBreadCrumbItem Path="/products" Text="Products" />
-    <RadzenBreadCrumbItem Text="Product Details" />
-</RadzenBreadCrumb>
-```
-
-#### RadzenSteps
-```razor
-<RadzenSteps @bind-SelectedIndex="@selectedStep">
-    <Steps>
-        <RadzenStepsItem Text="Step 1" />
-        <RadzenStepsItem Text="Step 2" />
-        <RadzenStepsItem Text="Step 3" />
-    </Steps>
-</RadzenSteps>
-```
-
-### Dialogs and Overlays
-
-#### RadzenDialog Service
-```csharp
-@inject DialogService DialogService
-
-private async Task ShowDialogAsync()
-{
-    await DialogService.OpenAsync<MyDialogComponent>("Dialog Title",
-        new Dictionary<string, object>() { { "Parameter", value } },
-        new DialogOptions() { Width = "600px", Height = "400px" });
-}
-```
-
-#### RadzenNotification Service
-```csharp
-@inject NotificationService NotificationService
-
-private void ShowNotification(NotificationSeverity severity = NotificationSeverity.Success)
-{
-    NotificationService.Notify(new NotificationMessage
-    {
-        Severity = severity,
-        Summary = "Success",
-        Detail = "Operation completed successfully.",
-        Duration = 4000
-    });
-}
-```
-
-#### RadzenTooltip Service
-```csharp
-@inject TooltipService TooltipService
-
-<RadzenButton Text="Hover me" 
-              MouseEnter="@(args => ShowTooltip(args))" />
-
-@code {
-    void ShowTooltip(ElementReference elementReference)
-    {
-        TooltipService.Open(elementReference, "Tooltip content", 
-            new TooltipOptions() { Duration = 3000 });
-    }
-}
-```
-
-#### RadzenContextMenu Service
-```csharp
-@inject ContextMenuService ContextMenuService
-
-<div @oncontextmenu="@ShowContextMenu" @oncontextmenu:preventDefault="true">
-    Right-click me
-</div>
-
-@code {
-    void ShowContextMenu(MouseEventArgs args)
-    {
-        ContextMenuService.Open(args, ds =>
-            @<RadzenMenu Click="OnMenuItemClick">
-                <RadzenMenuItem Text="Edit" Icon="edit" Value="edit" />
-                <RadzenMenuItem Text="Delete" Icon="delete" Value="delete" />
-            </RadzenMenu>);
-    }
-}
-```
-
-### Feedback Components
-
-#### RadzenProgressBar
-```razor
-<RadzenProgressBar Value="@progress" 
-                   Max="100" 
-                   ShowValue="true" 
-                   Unit="%" />
-```
-
-#### RadzenProgressBarCircular
-```razor
-<RadzenProgressBarCircular Value="@progress" 
-                           Max="100" 
-                           ShowValue="true">
-    <Template>@progress%</Template>
-</RadzenProgressBarCircular>
-```
-
-#### RadzenAlert
-```razor
-<RadzenAlert AlertStyle="AlertStyle.Success" 
-             Variant="Variant.Flat" 
-             AllowClose="true">
-    Operation completed successfully!
-</RadzenAlert>
-```
-
-#### RadzenBadge
-```razor
-<RadzenBadge BadgeStyle="BadgeStyle.Danger" 
-             Text="@notificationCount.ToString()" 
-             Shade="Shade.Lighter" />
-```
-
-## Best Practices
-
-### Component Initialization
-
-Use lifecycle methods appropriately:
-```csharp
-@code {
-    protected override async Task OnInitializedAsync()
-    {
-        // Load initial data
-        await LoadDataAsync();
-    }
-    
-    protected override async Task OnParametersSetAsync()
-    {
-        // React to parameter changes
-        if (ItemId != previousItemId)
-        {
-            await LoadItemAsync(ItemId);
-        }
-    }
-}
-```
-
-### Performance Optimization
-
-1. **Virtualization for Large Lists**
-```razor
-<RadzenDataGrid Data="@items" 
-                AllowVirtualization="true" 
-                Style="height:400px">
-    <!-- columns -->
-</RadzenDataGrid>
-```
-
-2. **Debouncing Input**
-```razor
-<RadzenTextBox @bind-Value="@searchText" 
-               Change="@OnSearchChangedAsync" 
-               Placeholder="Search..." />
-
-@code {
-    private System.Timers.Timer? debounceTimer;
-    
-    private void OnSearchChangedAsync(string value)
-    {
-        debounceTimer?.Stop();
-        debounceTimer = new System.Timers.Timer(300);
-        debounceTimer.Elapsed += async (sender, e) =>
-        {
-            await InvokeAsync(async () =>
-            {
-                await PerformSearchAsync(value);
-                StateHasChanged();
-            });
-        };
-        debounceTimer.AutoReset = false;
-        debounceTimer.Start();
-    }
-}
-```
-
-### Form Validation
-
-Integrate with Blazor's validation:
-```razor
-<EditForm Model="@model" OnValidSubmit="@OnValidSubmitAsync">
+<EditForm Model="@model" OnValidSubmit="@SaveAsync">
     <DataAnnotationsValidator />
-    <RadzenStack Gap="1rem">
+
+    <RadzenStack Gap="0.75rem">
         <RadzenFormField Text="Name" Variant="Variant.Outlined">
-            <RadzenTextBox @bind-Value="@model.Name" />
+            <RadzenTextBox @bind-Value="@model.Name" Name="Name" MaxLength="120" />
             <ValidationMessage For="@(() => model.Name)" />
         </RadzenFormField>
-        
-        <RadzenFormField Text="Email" Variant="Variant.Outlined">
-            <RadzenTextBox @bind-Value="@model.Email" />
-            <ValidationMessage For="@(() => model.Email)" />
+
+        <RadzenFormField Text="Price" Variant="Variant.Outlined">
+            <RadzenNumeric @bind-Value="@model.Price" TValue="decimal" Min="0" Step="0.01" Name="Price" />
+            <ValidationMessage For="@(() => model.Price)" />
         </RadzenFormField>
-        
-        <RadzenButton ButtonType="ButtonType.Submit" Text="Submit" />
+
+        <RadzenStack Orientation="Orientation.Horizontal" Gap="0.5rem">
+            <RadzenButton Text="Save" ButtonType="ButtonType.Submit" IsBusy="@isSaving" />
+            <RadzenButton Text="Cancel" ButtonStyle="ButtonStyle.Light" Click="@Cancel" />
+        </RadzenStack>
     </RadzenStack>
 </EditForm>
 ```
 
-### Accessibility
+### Dialog + Notification Pattern
+```csharp
+@inject DialogService DialogService
+@inject NotificationService NotificationService
 
-Radzen components are built with accessibility in mind:
-- Use appropriate ARIA labels
-- Ensure keyboard navigation works
-- Provide meaningful text for screen readers
+private async Task<bool> ConfirmDeleteAsync()
+{
+    var confirmed = await DialogService.Confirm(
+        "Delete this item?",
+        "Confirm",
+        new ConfirmOptions { OkButtonText = "Delete", CancelButtonText = "Cancel" });
 
-```razor
-<RadzenButton Text="Delete" 
-              Icon="delete" 
-              aria-label="Delete item" 
-              Click="@OnDeleteAsync" />
-```
+    return confirmed == true;
+}
 
-### Theming
-
-Customize theme colors by overriding CSS variables:
-```css
-:root {
-    --rz-primary: #1976d2;
-    --rz-secondary: #424242;
-    --rz-info: #0288d1;
-    --rz-success: #388e3c;
-    --rz-warning: #f57c00;
-    --rz-danger: #d32f2f;
+private void NotifySuccess(string detail)
+{
+    NotificationService.Notify(new NotificationMessage
+    {
+        Severity = NotificationSeverity.Success,
+        Summary = "Success",
+        Detail = detail,
+        Duration = 3000
+    });
 }
 ```
 
-## Common Patterns
-
-### Master-Detail View
-```razor
-<RadzenSplitter>
-    <RadzenSplitterPane Size="30%">
-        <RadzenDataList Data="@items" TItem="MyItem" 
-                        SelectionMode="DataListSelectionMode.Single"
-                        @bind-Value="@selectedItem">
-            <Template Context="item">
-                <RadzenText>@item.Name</RadzenText>
-            </Template>
-        </RadzenDataList>
-    </RadzenSplitterPane>
-    <RadzenSplitterPane Size="70%">
-        @if (selectedItem != null)
-        {
-            <RadzenCard>
-                <h3>@selectedItem.Name</h3>
-                <p>@selectedItem.Description</p>
-            </RadzenCard>
-        }
-    </RadzenSplitterPane>
-</RadzenSplitter>
-```
-
-### Loading State
+### Loading + Empty State Pattern
 ```razor
 @if (isLoading)
 {
-    <RadzenProgressBarCircular ProgressBarStyle="ProgressBarStyle.Primary" 
-                               Value="100" 
-                               ShowValue="false"
-                               Mode="ProgressBarMode.Indeterminate" />
+    <RadzenProgressBarCircular Mode="ProgressBarMode.Indeterminate" ShowValue="false" />
+}
+else if (items.Count == 0)
+{
+    <RadzenAlert AlertStyle="AlertStyle.Info" Variant="Variant.Flat">
+        No records found.
+    </RadzenAlert>
 }
 else
 {
-    <RadzenDataGrid Data="@items" TItem="MyItem">
-        <!-- columns -->
+    <RadzenDataGrid Data="@items" TItem="ProductDto">
+        <Columns>
+            <RadzenDataGridColumn TItem="ProductDto" Property="Name" Title="Name" />
+        </Columns>
     </RadzenDataGrid>
 }
 ```
 
-### Confirmation Dialog
-```csharp
-private async Task<bool> ConfirmDeleteAsync()
-{
-    var result = await DialogService.Confirm(
-        "Are you sure you want to delete this item?",
-        "Confirm Delete",
-        new ConfirmOptions() { OkButtonText = "Yes", CancelButtonText = "No" });
-    
-    return result == true;
+## Performance Defaults
+
+- Use `AllowVirtualization="true"` for large datasets and set a fixed grid height.
+- Debounce free-text search to reduce server calls.
+- Fetch data in `OnInitializedAsync`; re-fetch in `OnParametersSetAsync` only when a relevant parameter changes.
+- Avoid reloading all data after every mutation; patch local state when possible.
+
+Debounce example:
+```razor
+<RadzenTextBox @bind-Value="@search"
+               Change="@OnSearchChange"
+               Placeholder="Search..." />
+
+@code {
+    private System.Timers.Timer? _debounce;
+    private string? search;
+
+    private void OnSearchChange(string value)
+    {
+        _debounce?.Stop();
+        _debounce?.Dispose();
+
+        _debounce = new System.Timers.Timer(300);
+        _debounce.AutoReset = false;
+        _debounce.Elapsed += async (_, _) =>
+        {
+            await InvokeAsync(async () =>
+            {
+                search = value;
+                await ReloadAsync();
+                StateHasChanged();
+            });
+        };
+        _debounce.Start();
+    }
 }
 ```
 
-## Resources
+## Accessibility + UX Checklist
 
-- [Radzen Blazor Components Documentation](https://blazor.radzen.com/)
-- [Radzen Demos](https://blazor.radzen.com/get-started)
-- [Radzen GitHub Repository](https://github.com/radzenhq/radzen-blazor)
-- [Theme Customization](https://blazor.radzen.com/themes)
+- Every icon-only button must include `aria-label`.
+- Keep destructive actions behind a confirmation dialog.
+- Use `IsBusy` on submit actions to prevent double submits.
+- Use clear empty-state and error-state messages.
+- Keep tab order natural; do not break keyboard navigation.
 
-## Troubleshooting
+## Theme Tokens
 
-### Common Issues
+Override Radzen CSS variables instead of component-by-component inline styling:
 
-1. **Components not rendering**: Ensure `AddRadzenComponents()` is called in `Program.cs`
-2. **Theme not applied**: Verify `<RadzenTheme>` is in `App.razor` with correct render mode
-3. **Services not available**: Check that services (DialogService, NotificationService) are injected
-4. **Event handlers not firing**: Ensure components have `@rendermode InteractiveServer` or appropriate render mode
+```css
+:root {
+    --rz-primary: #005eb8;
+    --rz-secondary: #344054;
+    --rz-success: #0f9d58;
+    --rz-warning: #ed6c02;
+    --rz-danger: #d92d20;
+}
+```
+
+## Common Failure Points
+
+1. Components render without styles or behavior.
+Cause: Missing `<RadzenTheme />` and/or missing script reference.
+
+2. Dialog/notification service is null or not responding.
+Cause: `AddRadzenComponents()` not registered.
+
+3. UI events do not fire in server apps.
+Cause: Missing/incorrect render mode for interactive components.
+
+4. Data grid performance degrades with large datasets.
+Cause: No virtualization, no paging, or chatty search calls.
+
+## References
+
+- Radzen docs: https://blazor.radzen.com/docs
+- Get started: https://blazor.radzen.com/get-started
+- Demos: https://blazor.radzen.com/
+- GitHub: https://github.com/radzenhq/radzen-blazor

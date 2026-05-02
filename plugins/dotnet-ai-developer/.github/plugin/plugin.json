@@ -1,0 +1,23 @@
+{
+  "name": "dotnet-ai-developer",
+  "version": "1.0.0",
+  "description": "Expert .NET AI developer plugin for Microsoft.Extensions.AI and Microsoft Agent Framework.",
+  "author": {
+    "name": "magols"
+  },
+  "repository": "https://github.com/magols/agent-plugins",
+  "license": "MIT",
+  "keywords": [
+    "dotnet",
+    "csharp",
+    "ai",
+    "microsoft-extensions-ai",
+    "microsoft-agent-framework"
+  ],
+  "agents": [
+    "./agents"
+  ],
+  "skills": [
+    "./skills"
+  ]
+}

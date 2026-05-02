@@ -15,9 +15,15 @@
     "microsoft-agent-framework"
   ],
   "agents": [
-    "./agents"
+    "./agents/dotnet-ai-developer.agent.md",
+    "./agents/dotnet-ai-reviewer.agent.md"
   ],
   "skills": [
-    "./skills"
+    "./skills/extensions-ai-patterns",
+    "./skills/agent-framework-workflows",
+    "./skills/ai-observability-dotnet",
+    "./skills/ai-safety-guardrails-dotnet",
+    "./skills/ai-evals-dotnet",
+    "./skills/ai-provider-adapters-dotnet"
   ]
 }

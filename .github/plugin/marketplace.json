@@ -13,6 +13,9 @@
       "source": "./plugins/blazor-dev",
       "description": "Scaffolding and component generation for Blazor + C# projects",
       "version": "1.0.0",
+      "agents": [
+        "./plugins/blazor-dev/agents/blazor-developer.agent.md"
+      ],
       "skills": [
         "./plugins/blazor-dev/skills/blazor-project-scaffold",
         "./plugins/blazor-dev/skills/blazor-component-generator"
@@ -23,16 +26,40 @@
       "source": "./plugins/csharp-code-review",
       "description": "PR review and security review for C# and Blazor codebases",
       "version": "1.0.0",
+      "agents": [
+        "./plugins/csharp-code-review/agents/csharp-reviewer.agent.md"
+      ],
       "skills": [
         "./plugins/csharp-code-review/skills/csharp-pr-review",
         "./plugins/csharp-code-review/skills/blazor-security-review"
       ]
     },
     {
+      "name": "dotnet-ai-developer",
+      "source": "./plugins/dotnet-ai-developer",
+      "description": "Expert .NET AI developer plugin for Microsoft.Extensions.AI and Microsoft Agent Framework",
+      "version": "1.0.0",
+      "agents": [
+        "./plugins/dotnet-ai-developer/agents/dotnet-ai-developer.agent.md",
+        "./plugins/dotnet-ai-developer/agents/dotnet-ai-reviewer.agent.md"
+      ],
+      "skills": [
+        "./plugins/dotnet-ai-developer/skills/extensions-ai-patterns",
+        "./plugins/dotnet-ai-developer/skills/agent-framework-workflows",
+        "./plugins/dotnet-ai-developer/skills/ai-observability-dotnet",
+        "./plugins/dotnet-ai-developer/skills/ai-safety-guardrails-dotnet",
+        "./plugins/dotnet-ai-developer/skills/ai-evals-dotnet",
+        "./plugins/dotnet-ai-developer/skills/ai-provider-adapters-dotnet"
+      ]
+    },
+    {
       "name": "fullstack-hybrid-developer",
       "source": "./plugins/fullstack-hybrid-developer",
       "description": "Full-stack hybrid developer plugin with Optimizely and Radzen instructions",
-      "version": "1.0.0"
+      "version": "1.0.0",
+      "agents": [
+        "./plugins/fullstack-hybrid-developer/agents/fullstack-hybrid-developer.agent.md"
+      ]
     }
   ]
 }

@@ -1,8 +1,7 @@
 ---
 description: "Review-focused .NET AI agent for Microsoft.Extensions.AI and Agent Framework code. Finds correctness, resiliency, security, observability, and testing gaps."
 name: "PLUGIN .NET AI Reviewer"
-model: ["GPT-5.3-Codex", "Claude Sonnet 4.6 (copilot)"]
-tools: ["changes", "codebase", "fetch", "findTestFiles", "problems", "search", "searchResults", "usages", "microsoft.docs.mcp/*"]
+tools: ["search/changes", "search/codebase", "web/fetch", "findTestFiles", "read/problems", "search", "search/searchResults", "search/usages", "microsoft.docs.mcp/*"]
 ---
 
 # .NET AI Reviewer

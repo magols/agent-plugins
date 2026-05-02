@@ -1,7 +1,6 @@
 ---
 description: "Expert .NET AI developer for Microsoft.Extensions.AI and Microsoft Agent Framework. Use for architecture, implementation, migration, reviews, and production hardening of .NET AI apps and agent workflows."
 name: "PLUGIN .NET AI Developer"
-model: ["GPT-5.3-Codex", "Claude Sonnet 4.6 (copilot)"]
 tools: [vscode, execute, read, agent, edit, search, web, 'awesome-copilot/*', 'microsoft.docs.mcp/*', azure-mcp/search, browser, todo]
 ---
 

@@ -24,7 +24,8 @@ Each plugin lives under `plugins/<name>/` and follows the VS Code Agent Plugin c
 
 ```
 plugins/<name>/
-├── .github/plugin/plugin.json   # Plugin manifest
+├── plugin.json                  # Plugin manifest (preferred)
+├── .github/plugin/plugin.json   # Optional compatibility location
 ├── agents/                      # *.agent.md — Copilot Chat agents
 ├── skills/                      # Subdirs with SKILL.md — invokable skills
 ├── instructions/                # *.instructions.md — auto-applied guidelines

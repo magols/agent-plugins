@@ -1,0 +1,22 @@
+{
+  "name": "csharp-code-review",
+  "version": "1.0.0",
+  "description": "Structured PR review and security review for C# and Blazor codebases, with OWASP-mapped findings.",
+  "author": {
+    "name": "magols"
+  },
+  "repository": "https://github.com/magols/agent-plugins",
+  "license": "MIT",
+  "keywords": [
+    "csharp",
+    "blazor",
+    "code-review",
+    "security",
+    "dotnet"
+  ],
+  "agents": ["./agents"],
+  "skills": [
+    "./skills/csharp-pr-review",
+    "./skills/blazor-security-review"
+  ]
+}

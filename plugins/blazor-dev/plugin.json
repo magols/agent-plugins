@@ -1,0 +1,22 @@
+{
+  "name": "blazor-dev",
+  "version": "1.0.0",
+  "description": "Scaffolding, component generation, and Blazor + C# development guidance for .NET 8+ projects.",
+  "author": {
+    "name": "magols"
+  },
+  "repository": "https://github.com/magols/agent-plugins",
+  "license": "MIT",
+  "keywords": [
+    "blazor",
+    "csharp",
+    "dotnet",
+    "scaffolding",
+    "components"
+  ],
+  "agents": ["./agents"],
+  "skills": [
+    "./skills/blazor-project-scaffold",
+    "./skills/blazor-component-generator"
+  ]
+}

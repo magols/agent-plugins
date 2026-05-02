@@ -1,0 +1,26 @@
+{
+  "name": "fullstack-hybrid-developer",
+  "version": "1.0.0",
+  "description": "Full-stack hybrid developer plugin for ASP.NET Core, EF Core, Blazor, Radzen, Optimizely CMS, Azure, and AI-enabled .NET applications.",
+  "author": {
+    "name": "magols"
+  },
+  "repository": "https://github.com/magols/agent-plugins",
+  "license": "MIT",
+  "keywords": [
+    "dotnet",
+    "aspnet-core",
+    "ef-core",
+    "blazor",
+    "radzen",
+    "optimizely",
+    "azure",
+    "ai"
+  ],
+  "agents": [
+    "./agents"
+  ],
+  "skills": [
+    "./skills"
+  ]
+}

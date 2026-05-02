@@ -2,7 +2,7 @@
   "name": "agent-plugins",
   "metadata": {
     "description": "Private VS Code Agent Plugins for C# and Blazor development.",
-    "version": "1.0.0"
+    "version": "1.1.0"
   },
   "owner": {
     "name": "magols"
@@ -38,7 +38,7 @@
       "name": "dotnet-ai-developer",
       "source": "./plugins/dotnet-ai-developer",
       "description": "Expert .NET AI developer plugin for Microsoft.Extensions.AI and Microsoft Agent Framework",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "agents": [
         "./plugins/dotnet-ai-developer/agents/dotnet-ai-developer.agent.md",
         "./plugins/dotnet-ai-developer/agents/dotnet-ai-reviewer.agent.md"

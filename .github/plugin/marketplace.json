@@ -1,0 +1,38 @@
+{
+  "name": "agent-plugins",
+  "metadata": {
+    "description": "Private VS Code Agent Plugins for C# and Blazor development.",
+    "version": "1.0.0"
+  },
+  "owner": {
+    "name": "magols"
+  },
+  "plugins": [
+    {
+      "name": "blazor-dev",
+      "source": "./plugins/blazor-dev",
+      "description": "Scaffolding and component generation for Blazor + C# projects",
+      "version": "1.0.0",
+      "skills": [
+        "./plugins/blazor-dev/skills/blazor-project-scaffold",
+        "./plugins/blazor-dev/skills/blazor-component-generator"
+      ]
+    },
+    {
+      "name": "csharp-code-review",
+      "source": "./plugins/csharp-code-review",
+      "description": "PR review and security review for C# and Blazor codebases",
+      "version": "1.0.0",
+      "skills": [
+        "./plugins/csharp-code-review/skills/csharp-pr-review",
+        "./plugins/csharp-code-review/skills/blazor-security-review"
+      ]
+    },
+    {
+      "name": "fullstack-hybrid-developer",
+      "source": "./plugins/fullstack-hybrid-developer",
+      "description": "Full-stack hybrid developer plugin with Optimizely and Radzen instructions",
+      "version": "1.0.0"
+    }
+  ]
+}

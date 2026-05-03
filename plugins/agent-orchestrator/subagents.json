@@ -33,31 +33,31 @@
       "name": "PLUGIN Blazor Developer",
       "intentCategory": "blazor-development",
       "runtimeAgentId": "agent-orchestrator:blazor-developer",
-      "agentDefinition": "./agents/blazor-dev/blazor-developer.agent.md"
+      "agentDefinition": "./agents/blazor-developer.agent.md"
     },
     {
       "name": "PLUGIN C# Code Reviewer",
       "intentCategory": "csharp-code-review",
       "runtimeAgentId": "agent-orchestrator:csharp-reviewer",
-      "agentDefinition": "./agents/csharp-code-review/csharp-reviewer.agent.md"
+      "agentDefinition": "./agents/csharp-reviewer.agent.md"
     },
     {
       "name": "PLUGIN .NET AI Developer",
       "intentCategory": "dotnet-ai-development",
       "runtimeAgentId": "agent-orchestrator:dotnet-ai-developer",
-      "agentDefinition": "./agents/dotnet-ai-developer/dotnet-ai-developer.agent.md"
+      "agentDefinition": "./agents/dotnet-ai-developer.agent.md"
     },
     {
       "name": "PLUGIN .NET AI Reviewer",
       "intentCategory": "dotnet-ai-review",
       "runtimeAgentId": "agent-orchestrator:dotnet-ai-reviewer",
-      "agentDefinition": "./agents/dotnet-ai-developer/dotnet-ai-reviewer.agent.md"
+      "agentDefinition": "./agents/dotnet-ai-reviewer.agent.md"
     },
     {
       "name": "PLUGIN Full-Stack Hybrid Developer",
       "intentCategory": "fullstack-hybrid-development",
       "runtimeAgentId": "agent-orchestrator:fullstack-hybrid-developer",
-      "agentDefinition": "./agents/fullstack-hybrid-developer/fullstack-hybrid-developer.agent.md"
+      "agentDefinition": "./agents/fullstack-hybrid-developer.agent.md"
     }
   ],
   "deterministicRouting": {

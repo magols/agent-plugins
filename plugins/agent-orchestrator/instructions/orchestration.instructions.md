@@ -37,6 +37,11 @@ Always use these names in proposals, handoff records, and summaries:
 - `PLUGIN Feature Specialist`
 - `PLUGIN Review Specialist`
 - `PLUGIN Issue Specialist`
+- `PLUGIN Blazor Developer`
+- `PLUGIN C# Code Reviewer`
+- `PLUGIN .NET AI Developer`
+- `PLUGIN .NET AI Reviewer`
+- `PLUGIN Full-Stack Hybrid Developer`
 
 Avoid aliases to keep transcript and audit outputs consistent.
 
@@ -46,13 +51,23 @@ Runtime launch mapping must come from `subagents.json`:
 - `PLUGIN Feature Specialist` -> `agent-orchestrator:feature-specialist`
 - `PLUGIN Review Specialist` -> `agent-orchestrator:review-specialist`
 - `PLUGIN Issue Specialist` -> `agent-orchestrator:issue-specialist`
+- `PLUGIN Blazor Developer` -> `agent-orchestrator:blazor-developer`
+- `PLUGIN C# Code Reviewer` -> `agent-orchestrator:csharp-reviewer`
+- `PLUGIN .NET AI Developer` -> `agent-orchestrator:dotnet-ai-developer`
+- `PLUGIN .NET AI Reviewer` -> `agent-orchestrator:dotnet-ai-reviewer`
+- `PLUGIN Full-Stack Hybrid Developer` -> `agent-orchestrator:fullstack-hybrid-developer`
 
 ## Specialist Boundaries
 
-- Build Specialist: build workflows, pipelines, diagnostics, release readiness.
-- Feature Specialist: code and test implementation.
-- Review Specialist: findings, risk, and merge recommendation.
-- Issue Specialist: issue/work-item operations on GitHub and Azure DevOps.
+- Build Specialist (`build`): build workflows, pipelines, diagnostics, release readiness.
+- Feature Specialist (`feature`): code and test implementation.
+- Review Specialist (`review`): findings, risk, and merge recommendation.
+- Issue Specialist (`issue-management`): issue/work-item operations on GitHub and Azure DevOps.
+- Blazor Developer (`blazor-development`): Blazor component creation, scaffolding, and UI implementation.
+- C# Code Reviewer (`csharp-code-review`): C#-specific code review, standards enforcement, and PR analysis.
+- .NET AI Developer (`dotnet-ai-development`): AI feature implementation using .NET AI libraries, agent frameworks, and provider adapters.
+- .NET AI Reviewer (`dotnet-ai-review`): review of AI code for correctness, safety, observability, and best-practice compliance.
+- Full-Stack Hybrid Developer (`fullstack-hybrid-development`): full-stack features spanning Blazor front-end, .NET back-end, and CMS/component integrations.
 
 If a request crosses boundaries, split it into sequential delegated tasks.
 

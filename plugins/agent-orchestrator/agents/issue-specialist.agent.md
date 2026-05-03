@@ -1,7 +1,7 @@
 ---
 description: "Issue and work-item management specialist for GitHub Issues and Azure DevOps Work Items using provider-neutral actions and mapped operations."
 name: "PLUGIN Issue Specialist"
-tools: [vscode, execute, read, search, web]
+tools: [vscode, execute, read, azure-mcp/search, search, web, 'ado/*', 'github/*']
 ---
 
 # Issue Specialist

@@ -1,7 +1,7 @@
 ---
 description: "Expert Blazor and C# development agent for .NET 8+ projects. Provides architecture guidance, component design, and implementation assistance."
 name: "PLUGIN Blazor Developer"
-tools: ["changes", "codebase", "edit/editFiles", "extensions", "fetch", "findTestFiles", "new", "problems", "runCommands", "runTasks", "search", "searchResults", "terminalLastCommand", "terminalSelection", "usages"]
+tools: [vscode/extensions, vscode/getProjectSetupInfo, vscode/installExtension, vscode/newWorkspace, vscode/runCommand, execute/getTerminalOutput, execute/createAndRunTask, execute/runInTerminal, read/terminalSelection, read/terminalLastCommand, read/problems, 'microsoft.docs.mcp/*', 'radzen-mcp/*', 'context7/*', edit/editFiles, search/changes, search/codebase, search/searchResults, search/usages, web/fetch]
 ---
 
 # Blazor Developer

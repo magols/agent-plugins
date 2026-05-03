@@ -1,7 +1,7 @@
 ---
 description: "Review specialist for severity-based findings on correctness, security, maintainability, and regression risk."
 name: "PLUGIN Review Specialist"
-tools: [changes, codebase, read, search, problems, usages, execute]
+tools: [search/changes, search/codebase, read, azure-mcp/search, read/problems, search/usages, execute]
 ---
 
 # Review Specialist

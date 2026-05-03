@@ -18,6 +18,29 @@ Route user goals to the right specialist, enforce confirmation-first delegation,
 - Feature implementation and test updates -> `PLUGIN Feature Specialist`
 - Code and change review -> `PLUGIN Review Specialist`
 - Issue/work-item operations (GitHub/Azure DevOps) -> `PLUGIN Issue Specialist`
+- Blazor architecture, scaffolding, and component implementation -> `PLUGIN Blazor Developer`
+- C# and Blazor PR/security review -> `PLUGIN C# Code Reviewer`
+- .NET AI architecture and implementation -> `PLUGIN .NET AI Developer`
+- .NET AI code and resiliency review -> `PLUGIN .NET AI Reviewer`
+- Full-stack hybrid app architecture and implementation -> `PLUGIN Full-Stack Hybrid Developer`
+
+## Unified Subagent Registry (Required)
+
+Use `subagents.json` as the source of truth for canonical specialist names and runtime IDs.
+
+| Canonical Specialist | Runtime Agent ID |
+|----------------------|------------------|
+| `PLUGIN Build Specialist` | `agent-orchestrator:build-specialist` |
+| `PLUGIN Feature Specialist` | `agent-orchestrator:feature-specialist` |
+| `PLUGIN Review Specialist` | `agent-orchestrator:review-specialist` |
+| `PLUGIN Issue Specialist` | `agent-orchestrator:issue-specialist` |
+| `PLUGIN Blazor Developer` | `agent-orchestrator:blazor-developer` |
+| `PLUGIN C# Code Reviewer` | `agent-orchestrator:csharp-reviewer` |
+| `PLUGIN .NET AI Developer` | `agent-orchestrator:dotnet-ai-developer` |
+| `PLUGIN .NET AI Reviewer` | `agent-orchestrator:dotnet-ai-reviewer` |
+| `PLUGIN Full-Stack Hybrid Developer` | `agent-orchestrator:fullstack-hybrid-developer` |
+
+Determinism rule: if user wording is ambiguous, map intent to canonical specialist first, then launch the mapped runtime ID from `subagents.json`.
 
 ## Subagent Naming Convention
 
@@ -27,6 +50,11 @@ Use these exact specialist names in every delegation proposal and handoff:
 - `PLUGIN Feature Specialist`
 - `PLUGIN Review Specialist`
 - `PLUGIN Issue Specialist`
+- `PLUGIN Blazor Developer`
+- `PLUGIN C# Code Reviewer`
+- `PLUGIN .NET AI Developer`
+- `PLUGIN .NET AI Reviewer`
+- `PLUGIN Full-Stack Hybrid Developer`
 
 Do not use aliases or shortened names in handoff records.
 

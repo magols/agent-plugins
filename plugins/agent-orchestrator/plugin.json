@@ -1,28 +1,40 @@
 {
   "name": "agent-orchestrator",
-  "version": "1.0.0",
-  "description": "Orchestrator agent plugin that delegates build, feature implementation, review, and issue management workflows with confirmation-first handoffs.",
+  "version": "1.2.0",
+  "description": "Unified orchestrator entry plugin that delegates build, feature implementation, review, issue management, Blazor development, .NET AI development/review, C# review, and full-stack hybrid workflows with confirmation-first handoffs.",
   "author": {
     "name": "magols"
   },
   "repository": "https://github.com/magols/agent-plugins",
   "license": "MIT",
   "keywords": [
+    "unified-orchestrator",
     "orchestrator",
     "multi-agent",
     "agent-framework",
     "github",
     "azure-devops",
     "code-review",
-    "workflow"
+    "workflow",
+    "blazor",
+    "csharp",
+    "dotnet-ai",
+    "fullstack"
   ],
   "agents": [
     "./agents"
   ],
+  "entryAgent": "./agents/orchestrator.agent.md",
+  "subagentRegistry": "./subagents.json",
   "skills": [
     "./skills"
   ],
   "instructions": [
-    "./instructions/orchestration.instructions.md"
+    "./instructions/orchestration.instructions.md",
+    "./instructions/blazor-dev/blazor-csharp.instructions.md",
+    "./instructions/csharp-code-review/csharp-review-standards.instructions.md",
+    "./instructions/dotnet-ai-developer/dotnet-ai.instructions.md",
+    "./instructions/fullstack-hybrid-developer/radzen-blazor.instructions.md",
+    "./instructions/fullstack-hybrid-developer/optimizely-cms.instructions.md"
   ]
 }

@@ -19,6 +19,7 @@ Use these standards whenever the plugin performs multi-step work.
 
 Include these fields for each handoff:
 
+- TargetAgent
 - CorrelationId
 - TaskId
 - IntentCategory
@@ -38,6 +39,13 @@ Always use these names in proposals, handoff records, and summaries:
 - `PLUGIN Issue Specialist`
 
 Avoid aliases to keep transcript and audit outputs consistent.
+
+Runtime launch mapping must come from `subagents.json`:
+
+- `PLUGIN Build Specialist` -> `agent-orchestrator:build-specialist`
+- `PLUGIN Feature Specialist` -> `agent-orchestrator:feature-specialist`
+- `PLUGIN Review Specialist` -> `agent-orchestrator:review-specialist`
+- `PLUGIN Issue Specialist` -> `agent-orchestrator:issue-specialist`
 
 ## Specialist Boundaries
 

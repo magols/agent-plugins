@@ -36,6 +36,8 @@ Validation scenarios for `agent-orchestrator` routing, confirmation gates, and t
 | ORCH-020 | Retry failed subagent launch after user approval and continue workflow. | Any failed task -> retry -> continue | 2 (initial + retry) | Failed launch audit, approved retry launch receipt, resumed completion path |
 | ORCH-021 | Multi-stage mixed flow: parallel build+feature, then review, then dual-provider issue sync. | (Build + Feature) -> Review -> Issue | 1 for parallel batch, 1 review, 1 issue | Three-stage checkpoint record with dependency transitions and dual-provider IDs |
 | ORCH-022 | User changes scope after first delegated step; re-plan remaining subagent sequence. | Re-plan after Build completion | 1 for original, 1+ for updated plan | Scope delta record, new TaskIds, and non-circular continuation |
+| ORCH-023 | Implement an AI chatbot app, then run review before closure. | Build -> Feature -> Review | 3 | Deterministic handoff order and consolidated merge-readiness summary |
+| ORCH-024 | Run review-first on AI app changes, apply fixes, then re-review. | Review -> Feature -> Review | 3 | Two review checkpoints with fix-loop evidence and final confidence statement |
 
 ## Pass Criteria
 

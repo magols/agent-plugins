@@ -11,20 +11,36 @@
     {
       "name": "agent-orchestrator",
       "source": "./plugins/agent-orchestrator",
-      "description": "Orchestrator agent plugin that delegates build, feature implementation, review, and issue management workflows with confirmation-first handoffs.",
-      "version": "1.0.0",
+      "description": "Unified orchestrator entry plugin with deterministic delegation to build, feature, review, issue, Blazor, C# review, .NET AI, and full-stack hybrid specialists.",
+      "version": "1.2.0",
       "agents": [
         "./plugins/agent-orchestrator/agents/orchestrator.agent.md",
         "./plugins/agent-orchestrator/agents/build-specialist.agent.md",
         "./plugins/agent-orchestrator/agents/feature-specialist.agent.md",
         "./plugins/agent-orchestrator/agents/review-specialist.agent.md",
-        "./plugins/agent-orchestrator/agents/issue-specialist.agent.md"
+        "./plugins/agent-orchestrator/agents/issue-specialist.agent.md",
+        "./plugins/agent-orchestrator/agents/blazor-dev/blazor-developer.agent.md",
+        "./plugins/agent-orchestrator/agents/csharp-code-review/csharp-reviewer.agent.md",
+        "./plugins/agent-orchestrator/agents/dotnet-ai-developer/dotnet-ai-developer.agent.md",
+        "./plugins/agent-orchestrator/agents/dotnet-ai-developer/dotnet-ai-reviewer.agent.md",
+        "./plugins/agent-orchestrator/agents/fullstack-hybrid-developer/fullstack-hybrid-developer.agent.md"
       ],
       "skills": [
         "./plugins/agent-orchestrator/skills/orchestration-router",
         "./plugins/agent-orchestrator/skills/multi-subagent-execution",
         "./plugins/agent-orchestrator/skills/dual-tracker-issue-management",
-        "./plugins/agent-orchestrator/skills/delivery-workflow-checkpoints"
+        "./plugins/agent-orchestrator/skills/delivery-workflow-checkpoints",
+        "./plugins/agent-orchestrator/skills/blazor-dev/blazor-project-scaffold",
+        "./plugins/agent-orchestrator/skills/blazor-dev/blazor-component-generator",
+        "./plugins/agent-orchestrator/skills/csharp-code-review/csharp-pr-review",
+        "./plugins/agent-orchestrator/skills/csharp-code-review/blazor-security-review",
+        "./plugins/agent-orchestrator/skills/dotnet-ai-developer/extensions-ai-patterns",
+        "./plugins/agent-orchestrator/skills/dotnet-ai-developer/agent-framework-workflows",
+        "./plugins/agent-orchestrator/skills/dotnet-ai-developer/ai-observability-dotnet",
+        "./plugins/agent-orchestrator/skills/dotnet-ai-developer/ai-safety-guardrails-dotnet",
+        "./plugins/agent-orchestrator/skills/dotnet-ai-developer/ai-evals-dotnet",
+        "./plugins/agent-orchestrator/skills/dotnet-ai-developer/ai-provider-adapters-dotnet",
+        "./plugins/agent-orchestrator/skills/fullstack-hybrid-developer/microsoft-agent-framework"
       ]
     },
     {

@@ -56,6 +56,7 @@ Before selecting a specialist, normalize to these canonical names:
 - issue-management -> `PLUGIN Issue Specialist`
 
 If a prompt includes alternate names (for example, "reviewer", "tracker agent", or "devops issue agent"), map them to the canonical names above before delegation.
+Resolve runtime launch IDs from `subagents.json` so specialist routing stays deterministic.
 
 ## Delegation Template
 

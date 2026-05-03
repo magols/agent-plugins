@@ -1,0 +1,82 @@
+{
+  "entryPoint": {
+    "name": "PLUGIN Orchestrator",
+    "runtimeAgentId": "agent-orchestrator:orchestrator",
+    "agentDefinition": "./agents/orchestrator.agent.md"
+  },
+  "subagents": [
+    {
+      "name": "PLUGIN Build Specialist",
+      "intentCategory": "build",
+      "runtimeAgentId": "agent-orchestrator:build-specialist",
+      "agentDefinition": "./agents/build-specialist.agent.md"
+    },
+    {
+      "name": "PLUGIN Feature Specialist",
+      "intentCategory": "feature",
+      "runtimeAgentId": "agent-orchestrator:feature-specialist",
+      "agentDefinition": "./agents/feature-specialist.agent.md"
+    },
+    {
+      "name": "PLUGIN Review Specialist",
+      "intentCategory": "review",
+      "runtimeAgentId": "agent-orchestrator:review-specialist",
+      "agentDefinition": "./agents/review-specialist.agent.md"
+    },
+    {
+      "name": "PLUGIN Issue Specialist",
+      "intentCategory": "issue-management",
+      "runtimeAgentId": "agent-orchestrator:issue-specialist",
+      "agentDefinition": "./agents/issue-specialist.agent.md"
+    },
+    {
+      "name": "PLUGIN Blazor Developer",
+      "intentCategory": "blazor-development",
+      "runtimeAgentId": "agent-orchestrator:blazor-developer",
+      "agentDefinition": "./agents/blazor-dev/blazor-developer.agent.md"
+    },
+    {
+      "name": "PLUGIN C# Code Reviewer",
+      "intentCategory": "csharp-code-review",
+      "runtimeAgentId": "agent-orchestrator:csharp-reviewer",
+      "agentDefinition": "./agents/csharp-code-review/csharp-reviewer.agent.md"
+    },
+    {
+      "name": "PLUGIN .NET AI Developer",
+      "intentCategory": "dotnet-ai-development",
+      "runtimeAgentId": "agent-orchestrator:dotnet-ai-developer",
+      "agentDefinition": "./agents/dotnet-ai-developer/dotnet-ai-developer.agent.md"
+    },
+    {
+      "name": "PLUGIN .NET AI Reviewer",
+      "intentCategory": "dotnet-ai-review",
+      "runtimeAgentId": "agent-orchestrator:dotnet-ai-reviewer",
+      "agentDefinition": "./agents/dotnet-ai-developer/dotnet-ai-reviewer.agent.md"
+    },
+    {
+      "name": "PLUGIN Full-Stack Hybrid Developer",
+      "intentCategory": "fullstack-hybrid-development",
+      "runtimeAgentId": "agent-orchestrator:fullstack-hybrid-developer",
+      "agentDefinition": "./agents/fullstack-hybrid-developer/fullstack-hybrid-developer.agent.md"
+    }
+  ],
+  "deterministicRouting": {
+    "intentToSpecialist": {
+      "build": "PLUGIN Build Specialist",
+      "feature": "PLUGIN Feature Specialist",
+      "review": "PLUGIN Review Specialist",
+      "issue-management": "PLUGIN Issue Specialist",
+      "blazor-development": "PLUGIN Blazor Developer",
+      "csharp-code-review": "PLUGIN C# Code Reviewer",
+      "dotnet-ai-development": "PLUGIN .NET AI Developer",
+      "dotnet-ai-review": "PLUGIN .NET AI Reviewer",
+      "fullstack-hybrid-development": "PLUGIN Full-Stack Hybrid Developer"
+    },
+    "mixedWorkflowDefaultOrder": [
+      "build",
+      "feature",
+      "review",
+      "issue-management"
+    ]
+  }
+}

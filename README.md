@@ -10,6 +10,7 @@ Private VS Code Agent Plugins focused on **C# and Blazor** development.
 | [csharp-code-review](./plugins/csharp-code-review/) | PR review and security review for C# and Blazor codebases |
 | [dotnet-ai-developer](./plugins/dotnet-ai-developer/) | .NET AI developer agent focused on Microsoft.Extensions.AI and Microsoft Agent Framework |
 | [fullstack-hybrid-developer](./plugins/fullstack-hybrid-developer/) | Full-stack hybrid developer agent with bundled Optimizely CMS and Radzen Blazor instructions |
+| [agent-orchestrator](./plugins/agent-orchestrator/) | Confirmation-first orchestrator with specialist subagents for build, feature implementation, review, and dual-tracker issue management |
 
 ## Installing in VS Code
 

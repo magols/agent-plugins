@@ -9,6 +9,25 @@
   },
   "plugins": [
     {
+      "name": "agent-orchestrator",
+      "source": "./plugins/agent-orchestrator",
+      "description": "Orchestrator agent plugin that delegates build, feature implementation, review, and issue management workflows with confirmation-first handoffs.",
+      "version": "1.0.0",
+      "agents": [
+        "./plugins/agent-orchestrator/agents/orchestrator.agent.md",
+        "./plugins/agent-orchestrator/agents/build-specialist.agent.md",
+        "./plugins/agent-orchestrator/agents/feature-specialist.agent.md",
+        "./plugins/agent-orchestrator/agents/review-specialist.agent.md",
+        "./plugins/agent-orchestrator/agents/issue-specialist.agent.md"
+      ],
+      "skills": [
+        "./plugins/agent-orchestrator/skills/orchestration-router",
+        "./plugins/agent-orchestrator/skills/multi-subagent-execution",
+        "./plugins/agent-orchestrator/skills/dual-tracker-issue-management",
+        "./plugins/agent-orchestrator/skills/delivery-workflow-checkpoints"
+      ]
+    },
+    {
       "name": "blazor-dev",
       "source": "./plugins/blazor-dev",
       "description": "Scaffolding and component generation for Blazor + C# projects",

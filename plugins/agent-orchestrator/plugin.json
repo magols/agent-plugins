@@ -1,0 +1,28 @@
+{
+  "name": "agent-orchestrator",
+  "version": "1.0.0",
+  "description": "Orchestrator agent plugin that delegates build, feature implementation, review, and issue management workflows with confirmation-first handoffs.",
+  "author": {
+    "name": "magols"
+  },
+  "repository": "https://github.com/magols/agent-plugins",
+  "license": "MIT",
+  "keywords": [
+    "orchestrator",
+    "multi-agent",
+    "agent-framework",
+    "github",
+    "azure-devops",
+    "code-review",
+    "workflow"
+  ],
+  "agents": [
+    "./agents"
+  ],
+  "skills": [
+    "./skills"
+  ],
+  "instructions": [
+    "./instructions/orchestration.instructions.md"
+  ]
+}

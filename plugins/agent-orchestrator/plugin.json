@@ -1,6 +1,6 @@
 {
   "name": "agent-orchestrator",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "Unified orchestrator entry plugin that delegates build, feature implementation, review, issue management, Blazor development, .NET AI development/review, C# review, and full-stack hybrid workflows with confirmation-first handoffs.",
   "author": {
     "name": "magols"

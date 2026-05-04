@@ -2,13 +2,6 @@
 
 Unified orchestrator plugin for confirmation-first, multi-agent delivery workflows.
 
-This plugin now includes migrated capabilities from:
-
-- `blazor-dev`
-- `csharp-code-review`
-- `dotnet-ai-developer`
-- `fullstack-hybrid-developer`
-
 ## What This Plugin Does
 
 `PLUGIN Orchestrator` is the single workflow entry point. It performs deterministic routing to specialist subagents, but only after explicit user confirmation for each delegation.
@@ -340,14 +333,14 @@ See [WORKFLOWS.md](./WORKFLOWS.md) for copy-paste-ready prompts and step-by-step
 
 | Skill | Description |
 |-------|-------------|
-| `orchestration-router` | Deterministic routing matrix, delegation envelope, and confirmation checkpoint protocol. |
-| `delivery-workflow-checkpoints` | Standardized handoff checkpoints for build, feature, and review sequences. |
-| `dual-tracker-issue-management` | Provider-neutral issue actions mapped to GitHub Issues and Azure DevOps Work Items. |
-| `multi-subagent-execution` | Execution protocol for running multiple subagents in sequential or parallel mode with conflict checks and merge rules. |
-| `blazor-dev/*` | Migrated Blazor scaffolding and component-generation skills. |
-| `csharp-code-review/*` | Migrated C# PR review and Blazor security review skills. |
-| `dotnet-ai-developer/*` | Migrated .NET AI workflows, observability, safety, evals, and provider adapter skills. |
-| `fullstack-hybrid-developer/*` | Migrated Microsoft Agent Framework references and full-stack hybrid skills. |
+| `orchestration-router` | Classifies requests into build, feature, review, issue-management, or mixed workflows; normalizes specialist names; and defines the confirmation-first delegation payload used before every handoff. |
+| `delivery-workflow-checkpoints` | Defines the orchestrator checkpoint lifecycle from intake through closure, including checkpoint record fields, evidence capture, consolidation rules, and non-circular TaskId handling for re-entry or retries. |
+| `dual-tracker-issue-management` | Provides a canonical issue contract and action flow for creating, updating, linking, transitioning, and closing work across GitHub Issues and Azure DevOps Work Items, including normalized provider result reporting. |
+| `multi-subagent-execution` | Builds dependency-aware execution plans for two or more specialists, performs parallel conflict checks, defines the per-subagent result schema, and specifies merge/reporting rules for sequential and parallel runs. |
+| `blazor-dev/*` | Includes `blazor-project-scaffold` for setting up new .NET 8/9 Blazor apps with recommended structure, DI, config, and auth, plus `blazor-component-generator` for producing components with code-behind, parameters, lifecycle methods, EventCallback, forms, CSS isolation, and disposal patterns. |
+| `csharp-code-review/*` | Includes `csharp-pr-review` for structured C#/Blazor PR reviews covering naming, null safety, async correctness, DI, EF Core, render modes, and tests, plus `blazor-security-review` for OWASP-mapped reviews covering XSS, authorization, CSRF, WASM secrets, SignalR security, validation, and security headers. |
+| `dotnet-ai-developer/*` | Includes skills for designing Agent Framework workflows, implementing Microsoft.Extensions.AI patterns, building provider adapters, adding OpenTelemetry-based observability, enforcing AI safety guardrails, and creating repeatable .NET AI evaluation/regression workflows with datasets, scorecards, and CI gates. |
+| `fullstack-hybrid-developer/*` | Currently includes the `microsoft-agent-framework` skill, which provides shared guidance for creating, updating, migrating, explaining, and reviewing Microsoft Agent Framework solutions with language-specific .NET or Python references and docs-first validation. |
 
 ## Validation
 
